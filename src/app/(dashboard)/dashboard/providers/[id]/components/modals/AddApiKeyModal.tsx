@@ -151,9 +151,6 @@ export default function AddApiKeyModal({
     const wasOpen = wasOpenRef.current;
     wasOpenRef.current = isOpen;
     if (!isOpen || wasOpen) return;
-    // On open, reset baseUrl and assign a unique default name so a second API key
-    // for the same provider doesn't reuse "main" and trigger the backend
-    // name-based upsert that would silently overwrite the first connection (#6499).
     setFormData((current) => ({
       ...current,
       name: computeConnectionDefaultName(existingConnectionCount),
@@ -216,8 +213,6 @@ export default function AddApiKeyModal({
       )
     : t("apiKeyValidationFailed");
   const validationBadge = validationResult ? validationBadgeProps(validationResult) : null;
-  // Normalize raw credential field(s) into the single value stored as `apiKey`
-  // (#5088 command-code extract; #5446 Modal id:secret join; else verbatim).
   const resolveCredentialInput = () =>
     isCommandCode
       ? extractCommandCodeCredentialInput(formData.apiKey)
@@ -246,7 +241,6 @@ export default function AddApiKeyModal({
       const ok = !!data.valid;
       const unsupported = !!data.unsupported;
       setValidationResult(ok ? "success" : unsupported ? "unsupported" : "failed");
-      // #5088: surface backend reason (e.g. TLS/EACCES) instead of bare "invalid".
       if (!ok && !unsupported && typeof data.error === "string" && data.error) {
         setSaveError(data.error);
       }
@@ -291,7 +285,7 @@ export default function AddApiKeyModal({
 
       let isValid = Boolean(isNoAuthWebSessionCredential && !credentialInput);
       let validationError: string | null = null;
-      let isUnsupported = false; // #5565/#5567: no live validator → save anyway
+      let isUnsupported = false;
       if (!isValid) {
         try {
           setValidating(true);
@@ -498,7 +492,7 @@ export default function AddApiKeyModal({
         {bulkSupported && mode === "bulk" && (
           <div className="flex flex-col gap-3">
             <p className="text-xs text-text-muted">
-              Enter one API key per line. Optionally use <code className="font-mono">name|apiKey</code> to label a key.
+              {isCloudflare ? t("bulkAddFormatHintCloudflare") : t("bulkAddFormatHint")}
             </p>
             {openRouterPreset.input}
             {freeModelsToggle}
