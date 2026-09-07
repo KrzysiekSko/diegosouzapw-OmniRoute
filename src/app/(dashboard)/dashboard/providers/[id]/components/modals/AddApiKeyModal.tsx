@@ -498,7 +498,7 @@ export default function AddApiKeyModal({
         {bulkSupported && mode === "bulk" && (
           <div className="flex flex-col gap-3">
             <p className="text-xs text-text-muted">
-              {isCloudflare ? t("bulkAddFormatHintCloudflare") : t("bulkAddFormatHint")}
+              Enter one API key per line. Optionally use <code className="font-mono">name|apiKey</code> to label a key.
             </p>
             {openRouterPreset.input}
             {freeModelsToggle}
@@ -507,7 +507,7 @@ export default function AddApiKeyModal({
               placeholder={
                 isCloudflare
                   ? "name1|account-id-1|cf-token-1\nname2|account-id-2|cf-token-2"
-                  : "name1|sk-key1\nname2|sk-key2\nsk-key-only-auto-named"
+                  : "sk-key-1\naccount-b|sk-key-2"
               }
               value={bulkText}
               onChange={(e) => setBulkText(e.target.value)}
