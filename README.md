@@ -67,6 +67,9 @@
 
 </div>
 
+> [!NOTE]
+> **Fork notice:** This repository is a maintained fork of [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute), focused on a controlled AI Control Plane for deterministic routing, resilient multi-provider execution, agent integration, observability and governance. See [FORK.md](FORK.md) (English) and [docs/i18n/pl/FORK.md](docs/i18n/pl/FORK.md) (Polski) for the fork's purpose, scope and upstream relationship.
+
 <div align="center">
  <b>🌐 In 42+ languages</b>
  <table>
