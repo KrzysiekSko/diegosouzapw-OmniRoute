@@ -60,6 +60,18 @@ Upstream remains:
 
 The fork follows a **track and selectively integrate** model. Upstream changes may be evaluated and incorporated when they fit the fork's validated baseline. Changes developed here that are broadly useful to OmniRoute should, where practical, remain suitable for contribution upstream.
 
+## Maintenance and release model
+
+This fork is maintained as a controlled derivative of OmniRoute.
+
+Upstream changes are reviewed and selectively integrated when they fit the
+fork's validated baseline. Independent releases may be published when local
+divergence or fork-specific capabilities require them. Upstream version
+alignment is preferred where practical.
+
+This does not establish a mandatory independent release schedule or a formal
+independent lifecycle by default.
+
 ## Branch and change model
 
 The fork uses `main` as its stable integration baseline.

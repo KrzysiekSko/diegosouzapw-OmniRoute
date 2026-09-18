@@ -26,8 +26,8 @@ are implemented.
 
 ## Phase 2 — Governance
 
-- [~] Upstream tracking policy — publication pending
-- [ ] Release / versioning policy
+- [~] Upstream tracking policy — track and selectively integrate; publication/enforcement gate remains pending
+- [x] Conditional release policy — independent releases only when local divergence or fork-specific capabilities require them
 - [ ] CI / security / supply-chain baseline
 
 ## Phase 3 — Hermes Integration
